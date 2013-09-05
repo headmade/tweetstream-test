@@ -11,15 +11,13 @@ TweetStream.configure do |config|
 
 end
 
-EM.run do
-  client = TweetStream::Client.new
+client = TweetStream::Client.new
 
-  client.on_error do |message|
-    puts message
-  end
+client.on_error do |message|
+  puts message
+end
 
 
-  client.track(%w(kzn kazan)) do |status|
-    puts status.inspect
-  end
+client.track(%w(kzn kazan)) do |status|
+  puts status.inspect
 end
