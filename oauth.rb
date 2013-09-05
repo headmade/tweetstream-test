@@ -1,4 +1,5 @@
 require 'tweetstream'
+require 'yaml'
 auth = YAML::load(File.open("#{File.expand_path(File.dirname(__FILE__))}/credentials.yml"))
 
 TweetStream.configure do |config|
