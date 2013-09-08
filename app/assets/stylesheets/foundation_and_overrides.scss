@@ -69,7 +69,7 @@ $default-float: left;
 
 // $primary-color: #2ba6cb;
 // $secondary-color: #e9e9e9;
-// $alert-color: #c60f13;
+$alert-color: #f6242d;
 // $success-color: #5da423;
 
 // Make sure border radius matches unless we want it different.
@@ -138,7 +138,7 @@ $default-float: left;
 //
 
 // $row-width: emCalc(1000);
-// $column-gutter: emCalc(30);
+$column-gutter: emCalc(24);
 // $total-columns: 12;
 
 //
@@ -787,7 +787,7 @@ $default-float: left;
 // We use these to style the label text
 
 // $label-font-sizing: emCalc(14);
-// $label-font-weight: bold;
+$label-font-weight: lighter;
 // $label-font-color: #333;
 // $label-font-color-alt: #fff;
 
@@ -1239,7 +1239,7 @@ $topbar-bg: #2e3641;
 // Height and margin
 
 $topbar-height: 55px;
-// $topbar-margin-bottom: emCalc(30);
+$topbar-margin-bottom: emCalc(26);
 
 // Control Input height for top bar
 
@@ -1247,7 +1247,7 @@ $topbar-height: 55px;
 
 // Controlling the styles for the title in the top bar
 
-$topbar-title-weight: normal;
+$topbar-title-weight: 200;
 $topbar-title-font-size: emCalc(24);
 
 // Style the top bar dropdown elements

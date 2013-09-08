@@ -8,6 +8,7 @@ body
     image: image-url('main-bg.png')
     repeat: repeat
     position: top left
+  font-weight: lighter
 
 
 @import "icons/*.png"
@@ -23,25 +24,177 @@ body
 
   margin:
     top: -8px
+    right: 5px
+
+.icon-arrow-bottom-gray
+  +icons-sprite(arrow-bottom-gray)
+  height: icons-sprite-height(arrow-bottom-gray)
+  width: icons-sprite-width(arrow-bottom-gray)
+
+  margin:
+    left: 8px
+
+.icon-search
+  +icons-sprite(search)
+  height: icons-sprite-height(search)
+  width: icons-sprite-width(search)
+  float: left
+  position: relative
+  margin: 8px 0 0 7px
 
 
 
 // Panel-block
 .panel-block
-  background:
-    color: #fff
+  margin:
+    bottom: emCalc(30)
   
   header, .heaeder
+    font-weight: lighter
     background:
       color: $topbar-bg
     color: #fff
+    height: emCalc(34)
+    line-height: emCalc(34)
+    padding: 0 emCalc(20)
 
 
   .content
+    background:
+      color: #fff
     border:
       width: 1px
       style: solid
       color: #aaaaaa
     border-top: 0
 
-  
+
+.theme-search-form
+  padding: emCalc(10) emCalc(13)
+  border-bottom:
+    width: 1px
+    style: solid
+    color: #aaaaaa
+  margin: 0
+  +clearfix
+
+  input.search
+    margin: 0
+    +border-radius(6px)
+    border:
+      color: #acacac
+    background: #e2e1e1
+    float: left
+    margin:
+      left: -28px
+    padding:
+      left: 36px
+    font-size: emCalc(16)
+
+    &:focus
+      +box-shadow(none)
+
+.themes-rating-list
+  margin:
+    bottom: 0
+
+  li
+    a
+      display: block
+      padding: 0 emCalc(20)
+      height: emCalc(33)
+      line-height: emCalc(33)
+      border-bottom:
+        width: 1px
+        style: dashed
+        color: #bababa
+      color: #777777
+
+      &:hover
+        background:
+          color: #f4f4f4
+
+      &.active
+        background:
+          color: #e2e2e2
+        position: relative
+
+        &:after, &:before
+          position: absolute
+          right: -26px
+          top: 0
+          display: block
+          content: ""
+          z-index: 10
+
+        &:after
+          border:
+            width: 15px 15px 15px 0
+            color: transparent #fff transparent transparent
+            style: solid
+          top: 1px
+
+        &:before
+          border:
+            width: 16px 16px 16px 0
+            color: transparent #aaa transparent transparent
+            style: solid
+
+      &.more-link
+        border: 0
+        font-size: emCalc(14)
+        text-decoration: underline
+
+      .label
+        margin:
+          top: 6px
+
+$soc: "rs", "fb", "tw", "vk", "ok", "yt", "lj", "ma"
+
+.soc-links-list
+  margin: 0
+  background:
+    color: #b0b0b0
+
+  li
+    margin: 0
+
+    a
+      width: 55px
+      height: 55px
+      display: block
+      +opacity(0.3)
+
+      &:hover, &.active
+        +opacity(1)
+
+      @each $soc_link in $soc
+        &.#{$soc_link}
+          +icons-sprite(soc-#{$soc_link}-gray)
+          height: icons-sprite-height(soc-#{$soc_link}-gray)
+          width: icons-sprite-width(soc-#{$soc_link}-gray)
+
+          &:hover, &.active
+            +icons-sprite(soc-#{$soc_link})
+            height: icons-sprite-height(soc-#{$soc_link})
+            width: icons-sprite-width(soc-#{$soc_link})
+
+.soc-posts-list
+  li.item
+    padding: emCalc(10) emCalc(20)
+    border-bottom:
+      width: 1px
+      style: dashed
+      color: #bababa
+
+    &:hover
+      background:
+        color: #f4f4f4
+
+    .date
+      font-size: emCalc(11)
+      color: #999
+
+    .post
+      font-size: emCalc(14)
+      line-height: 1.4  
