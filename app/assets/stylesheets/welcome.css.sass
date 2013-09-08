@@ -1,0 +1,47 @@
+// Place all the styles related to the welcome controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+body
+  background:
+    image: image-url('main-bg.png')
+    repeat: repeat
+    position: top left
+
+
+@import "icons/*.png"
++all-icons-sprites
+
+.icon
+  +inline-block
+
+.icon-rusoc
+  +icons-sprite(rusoc)
+  height: icons-sprite-height(rusoc)
+  width: icons-sprite-width(rusoc)
+
+  margin:
+    top: -8px
+
+
+
+// Panel-block
+.panel-block
+  background:
+    color: #fff
+  
+  header, .heaeder
+    background:
+      color: $topbar-bg
+    color: #fff
+
+
+  .content
+    border:
+      width: 1px
+      style: solid
+      color: #aaaaaa
+    border-top: 0
+
+  
