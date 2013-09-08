@@ -22,6 +22,7 @@ GEM
     http_parser.rb (0.5.3)
     multi_json (1.7.9)
     multipart-post (1.2.0)
+    pg (0.16.0)
     simple_oauth (0.2.0)
     tweetstream (2.5.0)
       daemons (~> 1.1)
@@ -39,4 +40,5 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  pg
   tweetstream
