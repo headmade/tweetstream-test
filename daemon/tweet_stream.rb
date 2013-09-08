@@ -5,8 +5,8 @@ require 'yaml'
 require 'pg'
 require "unicode_utils/downcase"
 
-config_auth   = YAML::load(File.open("#{File.expand_path(File.dirname(__FILE__))}/credentials.yml"))
-config_filter = YAML::load(File.open("#{File.expand_path(File.dirname(__FILE__))}/filter.yml"))
+config_auth   = YAML::load(File.open("#{File.expand_path(File.dirname(__FILE__))}/../config/credentials.yml"))
+config_filter = YAML::load(File.open("#{File.expand_path(File.dirname(__FILE__))}/../config/filter.yml"))
 puts "FILTER: " + config_filter.inspect
 
 TweetStream.configure do |config|
