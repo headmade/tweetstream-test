@@ -42,7 +42,34 @@ body
   position: relative
   margin: 8px 0 0 7px
 
+.icon-arrow-bottom-white
+  +icons-sprite(arrow-bottom-white)
+  height: icons-sprite-height(arrow-bottom-white)
+  width: icons-sprite-width(arrow-bottom-white)
+  margin:
+    left: 5px
 
+
+.top-bar
+  .f-dropdown
+    background: #fff
+
+    li
+      background: #fff
+      float: none
+
+      a
+        background: #fff
+        color: #222
+        font-size: emCalc(16)
+        font-weight: lighter
+        line-height: emCalc(20)
+        height: emCalc(20)
+
+.regiton-chose-section
+  margin:
+    left: 30%
+  +clearfix
 
 // Panel-block
 .panel-block
@@ -198,3 +225,20 @@ $soc: "rs", "fb", "tw", "vk", "ok", "yt", "lj", "ma"
     .post
       font-size: emCalc(14)
       line-height: 1.4  
+
+
+#region-chosen-link
+  position: relative
+
+#region-chosen-list
+  position: absolute
+  top: 17px
+  left: 0
+  height: 55px
+  width: 100%
+  +opacity(0)
+
+.map-block
+  img
+    width: 100%
+    display: block

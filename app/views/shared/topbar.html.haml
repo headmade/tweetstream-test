@@ -6,3 +6,41 @@
           %a{href: "/"}
             %i.icon.icon-rusoc
             Rusocmedia
+
+    %section.top-bar-section.regiton-chose-section
+      %ul
+        %li
+          %a{href: "#"}
+            Россия (РФ)
+            %i.icon.icon-arrow-bottom-white
+        %li#region-chosen-link
+          %a{href: "#"}
+            Все регионы
+            %i.icon.icon-arrow-bottom-white
+
+          %select#region-chosen-list
+            %optgroup{label: "Все регионы"}
+              %option{value: ""}
+                Московская область (МО)
+              %option{value: ""}
+                Ленинградская область (ЛО)
+              %option{value: ""}
+                Республика Татарстан (РТ)
+              %option{value: ""}
+                Самарская область (СО)
+              %option{value: ""}
+                Ульяновская область (УО)
+              %option{value: ""}
+                Удмуртская Республика (УР)
+            %optgroup{label: "А"}
+              %option{value: ""}
+                Алтайский край (АК)
+              %option{value: ""}
+                Амурская область (АО)
+              %option{value: ""}
+                Архангельская область (АО)
+              %option{value: ""}
+                Астраханская область (АО)
+            %optgroup{label: "Б"}
+              %option{value: ""}
+                Белгородская область (БО)
