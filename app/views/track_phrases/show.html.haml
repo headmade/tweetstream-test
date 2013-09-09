@@ -1,0 +1,12 @@
+.row
+  %p#notice= notice
+
+.row
+  %p
+    %b Text:
+    = @track_phrase.text
+
+.row
+  = link_to 'Edit', edit_track_phrase_path(@track_phrase)
+  \|
+  = link_to 'Back', track_phrases_path

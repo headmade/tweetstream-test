@@ -1,0 +1,20 @@
+.row
+  %h1 Listing track_phrases
+
+.row
+  %table
+    %tr
+      %th Text
+      %th
+      %th
+      %th
+
+    - @track_phrases.each do |track_phrase|
+      %tr
+        %td= track_phrase.text
+        %td= link_to 'Show', track_phrase
+        %td= link_to 'Edit', edit_track_phrase_path(track_phrase)
+        %td= link_to 'Destroy', track_phrase, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+.row
+  = link_to 'New Track phrase', new_track_phrase_path
