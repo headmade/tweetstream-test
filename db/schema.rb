@@ -17,9 +17,9 @@ ActiveRecord::Schema.define(version: 20130909193400) do
   enable_extension "plpgsql"
 
   create_table "hashtags", force: true do |t|
-    t.string   "text"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "text",       null: false
   end
 
   create_table "hashtags_topics", id: false, force: true do |t|
@@ -37,9 +37,9 @@ ActiveRecord::Schema.define(version: 20130909193400) do
   end
 
   create_table "track_phrases", force: true do |t|
-    t.text     "text"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "text",       null: false
   end
 
   create_table "tweet_hashtags", force: true do |t|
