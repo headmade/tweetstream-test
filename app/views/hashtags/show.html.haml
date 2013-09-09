@@ -1,9 +1,12 @@
-%p#notice= notice
+.row
+  %p#notice= notice
 
-%p
-  %b Text:
-  = @hashtag.text
+.row
+  %p
+    %b Text:
+    = @hashtag.text
 
-= link_to 'Edit', edit_hashtag_path(@hashtag)
-\|
-= link_to 'Back', hashtags_path
+.row
+  = link_to 'Edit', edit_hashtag_path(@hashtag)
+  \|
+  = link_to 'Back', hashtags_path

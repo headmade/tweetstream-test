@@ -1,19 +1,20 @@
-%h1 Listing hashtags
+.row
+  %h1 Listing hashtags
 
-%table
-  %tr
-    %th Text
-    %th
-    %th
-    %th
-
-  - @hashtags.each do |hashtag|
+.row
+  %table
     %tr
-      %td= hashtag.text
-      %td= link_to 'Show', hashtag
-      %td= link_to 'Edit', edit_hashtag_path(hashtag)
-      %td= link_to 'Destroy', hashtag, :method => :delete, :data => { :confirm => 'Are you sure?' }
+      %th Text
+      %th
+      %th
+      %th
 
-%br
+    - @hashtags.each do |hashtag|
+      %tr
+        %td= hashtag.text
+        %td= link_to 'Show', hashtag
+        %td= link_to 'Edit', edit_hashtag_path(hashtag)
+        %td= link_to 'Destroy', hashtag, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
-= link_to 'New Hashtag', new_hashtag_path
+.row
+  = link_to 'New Hashtag', new_hashtag_path
