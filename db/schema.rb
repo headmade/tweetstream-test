@@ -11,21 +11,33 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130909102147) do
+ActiveRecord::Schema.define(version: 20130909193400) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "hashtags", force: true do |t|
-    t.string   "text"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "text",       null: false
   end
 
   create_table "track_phrases", force: true do |t|
-    t.text     "text"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "text",       null: false
+  end
+
+  create_table "tweet_hashtags", force: true do |t|
+    t.integer "tweet_id",   null: false
+    t.integer "hashtag_id", null: false
+  end
+
+  create_table "tweets", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "tweet",      null: false
+    t.text     "raw",        null: false
   end
 
 end

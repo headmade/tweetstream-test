@@ -16,8 +16,8 @@ TweetStream.configure do |config|
 end
 
 CREATE_TABLE_TWEET = <<EOS
-DROP TABLE IF EXISTS tweets_raw CASCADE;
-CREATE TABLE tweets_raw (
+DROP TABLE IF EXISTS tweets CASCADE;
+CREATE TABLE tweets (
   id          SERIAL PRIMARY KEY,
   created_at  TIMESTAMP       NOT NULL,
   tweet       VARCHAR         NOT NULL,
@@ -39,22 +39,22 @@ CREATE_TABLE_TWEET_HASHTAGS = <<EOS
 DROP TABLE IF EXISTS tweet_hashtags;
 CREATE TABLE tweet_hashtags (
   id         SERIAL PRIMARY KEY,
-  tweet_id   INTEGER NOT NULL REFERENCES tweets_raw(id) ON DELETE CASCADE,
-  hashtag_id INTEGER NOT NULL REFERENCES hashtags(id)   ON DELETE CASCADE
+  tweet_id   INTEGER NOT NULL REFERENCES tweets(id)   ON DELETE CASCADE,
+  hashtag_id INTEGER NOT NULL REFERENCES hashtags(id) ON DELETE CASCADE
 );
 CREATE INDEX ON tweet_hashtags(hashtag_id);
 CREATE INDEX ON tweet_hashtags(tweet_id);
 EOS
 
-INSERT_TWEET   = "INSERT INTO tweets_raw (created_at,tweet,raw) VALUES (NOW(),$1,$2) RETURNING id"
-INSERT_HASHTAG = "INSERT INTO hashtags   (created_at,text)      VALUES (NOW(),$1)    RETURNING id"
+INSERT_TWEET   = "INSERT INTO tweets (created_at,tweet,raw) VALUES (NOW(),$1,$2) RETURNING id"
+INSERT_HASHTAG = "INSERT INTO hashtags (created_at,text)    VALUES (NOW(),$1)    RETURNING id"
 
 INSERT_TWEET_HASHTAG = "INSERT INTO tweet_hashtags  (tweet_id,hashtag_id) VALUES "
 
 conn = PG.connect( user: 'dev', dbname: 'tweetstream_development' )
-conn.exec(CREATE_TABLE_TWEET)
-conn.exec(CREATE_TABLE_HASHTAGS)
-conn.exec(CREATE_TABLE_TWEET_HASHTAGS)
+#conn.exec(CREATE_TABLE_TWEET)
+#conn.exec(CREATE_TABLE_HASHTAGS)
+#conn.exec(CREATE_TABLE_TWEET_HASHTAGS)
 
 track_phrases = []
 conn.exec('SELECT id,text FROM track_phrases').each_row do |id,text|
