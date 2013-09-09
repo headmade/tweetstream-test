@@ -12,5 +12,8 @@ class CreateTweets < ActiveRecord::Migration
       t.integer :hashtag_id, null: false
     end
 
+    add_index :tweet_hashtags, :tweet_id
+    add_index :tweet_hashtags, :hashtag_id
+
   end
 end

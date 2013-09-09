@@ -33,6 +33,9 @@ ActiveRecord::Schema.define(version: 20130909193400) do
     t.integer "hashtag_id", null: false
   end
 
+  add_index "tweet_hashtags", ["hashtag_id"], name: "index_tweet_hashtags_on_hashtag_id", using: :btree
+  add_index "tweet_hashtags", ["tweet_id"], name: "index_tweet_hashtags_on_tweet_id", using: :btree
+
   create_table "tweets", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
