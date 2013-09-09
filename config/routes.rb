@@ -1,4 +1,6 @@
 TweetstreamTest::Application.routes.draw do
+  resources :topics
+
   resources :track_phrases
 
   resources :hashtags

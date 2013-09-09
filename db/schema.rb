@@ -17,15 +17,29 @@ ActiveRecord::Schema.define(version: 20130909193400) do
   enable_extension "plpgsql"
 
   create_table "hashtags", force: true do |t|
+    t.string   "text"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "text",       null: false
+  end
+
+  create_table "hashtags_topics", id: false, force: true do |t|
+    t.integer "topic_id",   null: false
+    t.integer "hashtag_id", null: false
+  end
+
+  add_index "hashtags_topics", ["topic_id"], name: "index_hashtags_topics_on_topic_id", using: :btree
+
+  create_table "topics", force: true do |t|
+    t.string   "title"
+    t.integer  "tweets_count"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "track_phrases", force: true do |t|
+    t.text     "text"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "text",       null: false
   end
 
   create_table "tweet_hashtags", force: true do |t|
