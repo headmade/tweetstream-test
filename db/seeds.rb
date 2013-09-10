@@ -60,6 +60,6 @@ topics.each do |name, tags|
     hashtag = Hashtag.find_or_create_by text: tag
     topic.hashtags << hashtag
   end
-  p "#{topic.title}: ok"
+  p "#{topic.title}: #{topic.save}"
 end
 p "Импорт завершен."
