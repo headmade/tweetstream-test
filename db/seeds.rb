@@ -47,19 +47,20 @@ phrases.each do |p|
 end
 
 topics = {
-  "Выборы" => %w(выборы2013 чистыевыборы msk0809 собянин навальный мэрмосквы выборымо),
-  "Политика" => %w(навальный собянин политика путин),
-  "Путин" => %w(путин президент путиным планпутина)
+  'Выборы' => %w(msk moskva чистыевыборы навальный собянин мэрмосквы выборымо выборы2013 msk0809),
+  'Путин' => %w(путин президент ввп планпутина)
 }
-p "Импорт тем"
-topics.each do |name, tags|
-  topic = Topic.find_by title: name
-  topic ||= Topic.new title: name
-  topic.hashtags.clear
-  tags.each do |tag|
-    hashtag = Hashtag.find_or_create_by text: tag
-    topic.hashtags << hashtag
-  end
-  p "#{topic.title}: #{topic.save}"
+
+# TODO: сделать вложенные топики
+topics['Политика'] = %w(дума медведев грызлов иванов сердюков политика) + topics['Выборы'] + topics['Путин']
+
+puts 'Импорт обзорных тем'
+
+topics.each do |title, tags|
+  topic = Topic.find_or_create_by title: title
+  topic.hashtags = tags.map { |tag| Hashtag.find_or_create_by text: tag }
+  puts "#{topic.title}:\t#{topic.save ? 'ok' : 'err'}:\t#{tags}"
 end
-p "Импорт завершен."
+
+puts 'Импорт завершен.'
+
