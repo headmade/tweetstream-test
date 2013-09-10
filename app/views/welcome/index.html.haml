@@ -25,19 +25,20 @@
           .panel-block
             %header
               Статистика
-            %ul.no-bullet.soc-posts-list
-              %li.item
-                .post
-                  За последние 5 минут:
-                  = Tweet.count_for_last(5*60)
-              %li.item
-                .post
-                  За последний час:
-                  = Tweet.count_for_last(60*60)
-              %li.item
-                .post
-                  За последние сутки:
-                  = Tweet.count_for_last(24*60*60)
+            .content
+              %ul.no-bullet.soc-posts-list
+                %li.item
+                  .post
+                    За последние 5 минут:
+                    = Tweet.count_for_last(5*60)
+                %li.item
+                  .post
+                    За последний час:
+                    = Tweet.count_for_last(60*60)
+                %li.item
+                  .post
+                    За последние сутки:
+                    = Tweet.count_for_last(24*60*60)
         .columns.small-6
           .panel-block.map-block
             %header
