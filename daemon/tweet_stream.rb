@@ -5,6 +5,8 @@ require 'tweetstream'
 require 'yaml'
 require 'pg'
 
+RAILS_ENV = ENV['RAILS_ENV'] ||= 'development'
+
 BASE_DIR = File.expand_path(File.join(File.dirname(__FILE__), '..'))
 CONF_DIR = File.join(BASE_DIR,'config')
 
@@ -18,7 +20,8 @@ INSERT_TWEET_HASHTAG = 'INSERT INTO tweet_hashtags (tweet_id,hashtag_id) VALUES 
 
 # --- initialize config (track_phrases) and last state (hashtags_known) ---
 
-conn = PG.connect( user: 'dev', dbname: 'tweetstream_development' )
+config_db = YAML::load_file(File.join(CONF_DIR,'database.yml'))[RAILS_ENV]
+conn = PG.connect( user: config_db['username'], dbname: config_db['database'] )
 
 track_phrases = []
 conn.exec('SELECT id,text FROM track_phrases').each_row do |id,text|
@@ -56,7 +59,7 @@ daemon.on_error do |message|
 end
 
 daemon.track(track_phrases) do |status|
-  conn ||= PG.connect( user: 'dev', dbname: 'tweetstream_development' )
+  conn ||= PG.connect( user: config_db['username'], dbname: config_db['database'] )
 #  puts status.attrs.inspect
   puts "#{status.user.name}: #{status.text}"
   tweet = status.text
