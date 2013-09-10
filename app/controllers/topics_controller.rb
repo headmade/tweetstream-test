@@ -10,6 +10,9 @@ class TopicsController < ApplicationController
   # GET /topics/1
   # GET /topics/1.json
   def show
+    @topics = Topic.limit(10)
+    @tweets = @topic.tweets
+    render 'welcome/index'
   end
 
   # GET /topics/new

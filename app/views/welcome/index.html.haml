@@ -11,7 +11,8 @@
           %ul.themes-rating-list.no-bullet
             %li
               - @topics.each do |topic|
-                %a{href: "#"}
+                - active_class = topic == @topic ? "active" : ''
+                = link_to topic, {class: active_class} do
                   = topic.title
                   %span.round.alert.label.right
                     = topic.tweets.count
@@ -53,7 +54,8 @@
             %li
               %a.ma{href: "#"}
           %ul.no-bullet.soc-posts-list
-            - @topics.first.tweets.limit(10).each do |tweet|
+            - @tweets = @topic && @topic.tweets || Tweet.all
+            - @tweets.limit(10).each do |tweet|
               %li.item
                 .date
                   = tweet.created_at
