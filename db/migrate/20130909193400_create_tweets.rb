@@ -7,6 +7,8 @@ class CreateTweets < ActiveRecord::Migration
       t.text   :raw,   null: false
     end
 
+    add_index :tweets, :created_at
+
     create_table :tweet_hashtags do |t|
       t.integer :tweet_id,   null: false
       t.integer :hashtag_id, null: false
