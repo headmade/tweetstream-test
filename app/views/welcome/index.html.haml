@@ -10,7 +10,7 @@
             %input.search.radius{type: "text", placeholder: "Поиск"}
           %ul.themes-rating-list.no-bullet
             %li
-              - @topics.each do |topic|
+              - @topics.sort { |a,b| b.tweets.count <=> a.tweets.count }.each do |topic|
                 - active_class = topic == @topic ? "active" : ''
                 = link_to topic, {class: active_class} do
                   = topic.title
