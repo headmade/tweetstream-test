@@ -10,50 +10,11 @@
             %input.search.radius{type: "text", placeholder: "Поиск"}
           %ul.themes-rating-list.no-bullet
             %li
-              %a{href: "#"}
-                Выборы...
-                %span.round.alert.label.right
-                  2 436
-            %li
-              %a{href: "#"}
-                Путин...
-                %span.round.alert.label.right
-                  1 570
-            %li
-              %a.active{href: "#"}
-                День города...
-                %span.round.alert.label.right
-                  1 126
-            %li
-              %a{href: "#"}
-                Камеры на дорогах...
-                %span.round.alert.label.right
-                  436
-            %li
-              %a{href: "#"}
-                Минниханов...
-                %span.round.alert.label.right
-                  334
-            %li
-              %a{href: "#"}
-                Новое назначение Минземимущество...
-                %span.round.alert.label.right
-                  286
-            %li
-              %a{href: "#"}
-                Van Burren приезжает...
-                %span.round.alert.label.right
-                  213
-            %li
-              %a{href: "#"}
-                Футбол...
-                %span.round.alert.label.right
-                  198
-            %li
-              %a{href: "#"}
-                Форсайт слот...
-                %span.round.alert.label.right
-                  65
+              - @topics.each do |topic|
+                %a{href: "#"}
+                  = topic.title
+                  %span.round.alert.label.right
+                    = topic.tweets.count
             %li
               %a.more-link.text-center{href: "#"}><
                 Показать больше
