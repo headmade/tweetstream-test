@@ -1,7 +1,9 @@
-%h1 Editing topic
+.row
+  .columns.small-12
+    %h1 Editing topic
 
-= render 'form'
+    = render 'form'
 
-= link_to 'Show', @topic
-\|
-= link_to 'Back', topics_path
+    = link_to 'Show', @topic
+    \|
+    = link_to 'Back', topics_path

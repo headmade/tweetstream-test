@@ -1,9 +1,14 @@
-%p#notice= notice
+.row
+  .columns.small-12
+    %p#notice= notice
 
-%p
-  %b Title:
-  = @topic.title
+    %p
+      %b Title:
+      = @topic.title
+      %br
+      %b Hashtags:
+      = @topic.hashtags.map{|h| h.text}.join ', '
 
-= link_to 'Edit', edit_topic_path(@topic)
-\|
-= link_to 'Back', topics_path
+    = link_to 'Edit', edit_topic_path(@topic)
+    \|
+    = link_to 'Back', topics_path

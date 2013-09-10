@@ -42,6 +42,24 @@ it_ulsk
 EOS
 
 phrases = phrases.split("\n")
+phrases.each do |p|
+  TrackPhrase.find_or_create_by text: p
+end
 
-TrackPhrase.create(phrases.map{ |p| { text: p }  })
-
+topics = {
+  "Выборы" => %w(msk moskva чистыевыборы),
+  "Политика" => %w(навальный собянин),
+  "Путин" => %w(путин президент)
+}
+p "Импорт тем"
+topics.each do |name, tags|
+  topic = Topic.find_by title: name
+  topic ||= Topic.new title: name
+  topic.hashtags.clear
+  tags.each do |tag|
+    hashtag = Hashtag.find_or_create_by text: tag
+    topic.hashtags << hashtag
+  end
+  p "#{topic.title}: ok"
+end
+p "Импорт завершен."

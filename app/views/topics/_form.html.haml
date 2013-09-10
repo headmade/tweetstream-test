@@ -9,5 +9,8 @@
   .field
     = f.label :title
     = f.text_field :title
+    - Hashtag.all.each do |hashtag|
+      = check_box_tag "topic[hashtags][id]", hashtag.id
+      = hashtag.text
   .actions
     = f.submit 'Save'

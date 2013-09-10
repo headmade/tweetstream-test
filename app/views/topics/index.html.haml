@@ -1,19 +1,24 @@
-%h1 Listing topics
+.row
+  .columns.small-12
+    %h1 Listing topics
 
-%table
-  %tr
-    %th Title
-    %th
-    %th
-    %th
+    %table{width:"100%"}
+      %thead
+        %tr
+          %th Title
+          %th hashtags
+          %th
+          %th
+          %th
+      %tbody
+        - @topics.each do |topic|
+          %tr
+            %td= topic.title
+            %td= topic.hashtags.map{|h| h.text}.join ', '
+            %td= link_to 'Show', topic
+            %td= link_to 'Edit', edit_topic_path(topic)
+            %td= link_to 'Destroy', topic, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
-  - @topics.each do |topic|
-    %tr
-      %td= topic.title
-      %td= link_to 'Show', topic
-      %td= link_to 'Edit', edit_topic_path(topic)
-      %td= link_to 'Destroy', topic, :method => :delete, :data => { :confirm => 'Are you sure?' }
+    %br
 
-%br
-
-= link_to 'New Topic', new_topic_path
+    = link_to 'New Topic', new_topic_path

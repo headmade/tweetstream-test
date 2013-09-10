@@ -42,6 +42,10 @@ class TopicsController < ApplicationController
   def update
     respond_to do |format|
       if @topic.update(topic_params)
+       #params[:topic][:hashtags].each do |k,v|
+       #  @topic.hashtags << Hashtag.find(k) if v == 1
+       #end
+       #@topic.save!
         format.html { redirect_to @topic, notice: 'Topic was successfully updated.' }
         format.json { head :no_content }
       else
@@ -69,6 +73,6 @@ class TopicsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def topic_params
-      params.require(:topic).permit(:title)
+      params.require(:topic).permit(:title, hashtags: [])
     end
 end
