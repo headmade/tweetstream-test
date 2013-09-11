@@ -53,6 +53,7 @@ gem 'capistrano'
 gem 'rvm-capistrano'
 gem "capi"
 
+gem 'newrelic_rpm', group: :production
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
