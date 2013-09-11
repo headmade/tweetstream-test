@@ -68,8 +68,7 @@
             %li
               %a.ma{href: "#"}
           %ul.no-bullet.soc-posts-list
-            - @tweets = @topic && @topic.tweets || Tweet.all
-            - @tweets.limit(20).sample(10).each do |tweet|
+            - @tweets.order("created_at").limit(10).each do |tweet|
               %li.item
                 .date
                   = tweet.created_at
